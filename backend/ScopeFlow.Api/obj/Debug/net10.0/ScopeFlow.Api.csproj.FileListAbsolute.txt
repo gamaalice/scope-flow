@@ -146,4 +146,3 @@ C:\Users\alice\Desktop\Projetos\github\scope-flow\backend\ScopeFlow.Api\bin\Debu
 C:\Users\alice\Desktop\Projetos\github\scope-flow\backend\ScopeFlow.Api\bin\Debug\net10.0\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\alice\Desktop\Projetos\github\scope-flow\backend\ScopeFlow.Api\bin\Debug\net10.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\alice\Desktop\Projetos\github\scope-flow\backend\ScopeFlow.Api\bin\Debug\net10.0\runtimes\win-x86\native\e_sqlite3.dll
-C:\Users\alice\Desktop\Projetos\github\scope-flow\backend\ScopeFlow.Api\obj\Debug\net10.0\ScopeFlow.Api.sourcelink.json
