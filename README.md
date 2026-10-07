@@ -44,16 +44,16 @@ The goal was also to build a small but complete project to practice and demonstr
 
 <table>
   <tr>
-    <td><img src="photos/2.png" width="400" /></td>
-    <td><img src="photos/3.png" width="400" /></td>
+    <td><img src="frontend/public/assets/2.png" width="400" /></td>
+    <td><img src="frontend/public/assets/3.png" width="400" /></td>
   </tr>
   <tr>
-    <td><img src="photos/4.png" width="400" /></td>
-    <td><img src="photos/5.png" width="400" /></td>
+    <td><img src="frontend/public/assets/4.png" width="400" /></td>
+    <td><img src="frontend/public/assets/5.png" width="400" /></td>
   </tr>
   <tr>
-    <td><img src="photos/6.png" width="400" /></td>
-      <td><img src="photos/7.png" width="400" /></td>
+    <td><img src="frontend/public/assets/6.png" width="400" /></td>
+     <td><img src="frontend/public/assets/7.png" width="400" /></td>
   </tr>
 </table>
 
