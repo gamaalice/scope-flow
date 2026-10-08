@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ScopeFlow.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4f1bf7e629c50e15aeaba5f8c00c0cae0fdb9569")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cb827daea3922f6093159c4fa96856b891f638af")]
 [assembly: System.Reflection.AssemblyProductAttribute("ScopeFlow.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ScopeFlow.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
