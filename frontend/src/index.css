@@ -840,6 +840,10 @@ button:disabled {
   flex: 1;
 }
 
+.scope-row .delete-action {
+  flex: 0 0 auto;
+}
+
 .scope-row strong {
   display: block;
   font-size: 13px;
@@ -944,9 +948,17 @@ button:disabled {
   font-size: 12px;
 }
 
+.table-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
 .table-action {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 5px;
 
   padding: 7px 0;
@@ -958,6 +970,25 @@ button:disabled {
 
   font-size: 11px;
   font-weight: 700;
+
+  transition: 0.2s ease;
+}
+
+.table-action:hover {
+  color: var(--blue);
+}
+
+.delete-action {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 9px;
+  color: var(--danger);
+}
+
+.delete-action:hover {
+  color: var(--danger);
+  background: rgba(181, 75, 98, 0.1);
 }
 
 .status-badge {

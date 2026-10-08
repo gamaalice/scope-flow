@@ -18,7 +18,10 @@ async function request<T>(
 
   if (!response.ok) {
     const message = await response.text();
-    throw new Error(message || "Não foi possível concluir a operação.");
+
+    throw new Error(
+      message || "Não foi possível concluir a operação."
+    );
   }
 
   if (response.status === 204) {
@@ -69,6 +72,17 @@ export const api = {
       }
     ),
 
+  deleteScopeItem: (
+    projectId: number,
+    id: number
+  ) =>
+    request<void>(
+      `/api/projects/${projectId}/scope-items/${id}`,
+      {
+        method: "DELETE",
+      }
+    ),
+
   getChangeRequests: (projectId: number) =>
     request<ChangeRequest[]>(
       `/api/projects/${projectId}/change-requests`
@@ -94,6 +108,17 @@ export const api = {
       {
         method: "POST",
         body: JSON.stringify(data),
+      }
+    ),
+
+  deleteChangeRequest: (
+    projectId: number,
+    id: number
+  ) =>
+    request<void>(
+      `/api/projects/${projectId}/change-requests/${id}`,
+      {
+        method: "DELETE",
       }
     ),
 

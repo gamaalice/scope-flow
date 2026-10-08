@@ -13,6 +13,7 @@ import {
   Sparkles,
   Sun,
   Target,
+  Trash2,
   X,
 } from "lucide-react";
 
@@ -110,6 +111,50 @@ function App() {
   async function openRequests(id: number) {
     await selectProject(id);
     setPage("requests");
+  }
+
+  async function deleteScopeItem(
+    projectId: number,
+    id: number
+  ) {
+    const confirmed = window.confirm(
+      "Tem certeza que deseja excluir este item do escopo?"
+    );
+
+    if (!confirmed) return;
+
+    try {
+      setError("");
+
+      await api.deleteScopeItem(projectId, id);
+      await selectProject(projectId);
+    } catch {
+      setError(
+        "Não foi possível excluir o item do escopo."
+      );
+    }
+  }
+
+  async function deleteChangeRequest(
+    projectId: number,
+    id: number
+  ) {
+    const confirmed = window.confirm(
+      "Tem certeza que deseja excluir esta solicitação?"
+    );
+
+    if (!confirmed) return;
+
+    try {
+      setError("");
+
+      await api.deleteChangeRequest(projectId, id);
+      await selectProject(projectId);
+    } catch {
+      setError(
+        "Não foi possível excluir a solicitação."
+      );
+    }
   }
 
   async function openAnalysis(request: ChangeRequest) {
@@ -277,6 +322,7 @@ function App() {
                     await selectProject(selectedProjectId);
                   }
                 }}
+                onDelete={deleteScopeItem}
               />
             )}
 
@@ -291,6 +337,7 @@ function App() {
                     await selectProject(selectedProjectId);
                   }
                 }}
+                onDelete={deleteChangeRequest}
               />
             )}
 
@@ -637,11 +684,16 @@ function ScopePage({
   scopeItems,
   onBack,
   onCreated,
+  onDelete,
 }: {
   project: Project | null;
   scopeItems: ScopeItem[];
   onBack: () => void;
   onCreated: () => Promise<void>;
+  onDelete: (
+    projectId: number,
+    id: number
+  ) => Promise<void>;
 }) {
   const [showForm, setShowForm] = useState(false);
 
@@ -757,6 +809,17 @@ function ScopePage({
                     ? "Incluído"
                     : "Não incluído"}
                 </span>
+
+                <button
+                  type="button"
+                  className="table-action delete-action"
+                  onClick={() =>
+                    onDelete(project.id, item.id)
+                  }
+                  title="Excluir item"
+                >
+                  <Trash2 size={16} />
+                </button>
               </div>
             ))}
           </div>
@@ -772,12 +835,17 @@ function RequestsPage({
   onBack,
   onAnalyze,
   onCreated,
+  onDelete,
 }: {
   project: Project | null;
   requests: ChangeRequest[];
   onBack: () => void;
   onAnalyze: (request: ChangeRequest) => void;
   onCreated: () => Promise<void>;
+  onDelete: (
+    projectId: number,
+    id: number
+  ) => Promise<void>;
 }) {
   const [showForm, setShowForm] = useState(false);
 
@@ -854,13 +922,26 @@ function RequestsPage({
                     : "—"}
                 </span>
 
-                <button
-                  className="table-action"
-                  onClick={() => onAnalyze(request)}
-                >
-                  Analisar
-                  <ArrowRight size={15} />
-                </button>
+                <div className="table-actions">
+                  <button
+                    className="table-action"
+                    onClick={() => onAnalyze(request)}
+                  >
+                    Analisar
+                    <ArrowRight size={15} />
+                  </button>
+
+                  <button
+                    type="button"
+                    className="table-action delete-action"
+                    onClick={() =>
+                      onDelete(project.id, request.id)
+                    }
+                    title="Excluir solicitação"
+                  >
+                    <Trash2 size={16} />
+                  </button>
+                </div>
               </div>
             ))}
           </div>
