@@ -4,11 +4,13 @@ import type {
   ScopeItem,
 } from "../types";
 
+const API_URL = import.meta.env.VITE_API_URL || "";
+
 async function request<T>(
   url: string,
   options?: RequestInit
 ): Promise<T> {
-  const response = await fetch(url, {
+  const response = await fetch(`${API_URL}${url}`, {
     headers: {
       "Content-Type": "application/json",
       ...(options?.headers || {}),
@@ -18,7 +20,6 @@ async function request<T>(
 
   if (!response.ok) {
     const message = await response.text();
-
     throw new Error(
       message || "Não foi possível concluir a operação."
     );
