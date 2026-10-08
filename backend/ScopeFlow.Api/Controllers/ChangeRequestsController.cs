@@ -205,7 +205,19 @@ public class ChangeRequestsController : ControllerBase
             return NotFound();
         }
 
-        return Ok(changeRequest);
+        return Ok(new
+        {
+            changeRequest.Id,
+            changeRequest.ProjectId,
+            changeRequest.Title,
+            changeRequest.Description,
+            changeRequest.Status,
+            changeRequest.Classification,
+            changeRequest.EstimatedHours,
+            changeRequest.EstimatedCost,
+            changeRequest.CreatedAt,
+            changeRequest.UpdatedAt
+        });
     }
 }
 
