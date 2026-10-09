@@ -1,3 +1,4 @@
+
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 using ScopeFlow.Api.Data;
@@ -21,14 +22,22 @@ builder.Services.AddCors(options =>
     options.AddPolicy("Frontend", policy =>
     {
         policy
-            .WithOrigins("http://localhost:5173",
-            "https://scope-flow-kappa.vercel.app")
+            .WithOrigins(
+                "http://localhost:5173",
+                "https://scope-flow-kappa.vercel.app"
+            )
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
 });
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<ScopeFlowDbContext>();
+    db.Database.Migrate();
+}
 
 if (app.Environment.IsDevelopment())
 {
